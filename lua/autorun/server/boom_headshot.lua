@@ -36,7 +36,7 @@ local function PlayerDeath( Ply, _, Attacker )
     if not IsValid( Attacker:GetActiveWeapon() ) then return end
     if Ply.IsGhost and Ply:IsGhost() then return end
 
-    if Ply.OwnedBlackMarketItems and Ply.OwnedBlackMarketItems[CAT_EQUIPMENT] then
+    if Ply.OwnedBlackMarketItems and Ply.OwnedBlackMarketItems[CAT_EQUIPMENT] == "fiber_helmet" then
         return
     end
 
