@@ -12,19 +12,6 @@ if SERVER then
     resource.AddFile( "materials/fwkzt/sprite_bloodspray8.vmt" )
 end
 
-local function NoTTTGib( Ply )
-    local Head = Ply:LookupBone( "valvebiped.bip01_head1" )
-    if not Head then return end
-    local Pos = Ply:GetBonePosition( Head )
-    Ply:ManipulateBoneScale( Head, vector_origin )
-    local ED = EffectData()
-    ED:SetEntity( Ply )
-    ED:SetNormal( -Ply:GetForward() )
-    ED:SetScale( Ply:EntIndex() )
-    ED:SetOrigin( Pos )
-    util.Effect( "headshot", ED )
-end
-
 local function gibPlayerHead( Ply, Normal )
     local Head = Ply:LookupBone( "valvebiped.bip01_head1" )
     if not Head then return end
@@ -49,8 +36,8 @@ local function PlayerDeath( Ply, _, Attacker )
     if not IsValid( Attacker:GetActiveWeapon() ) then return end
     if Ply.IsGhost and Ply:IsGhost() then return end
 
-    if Ply.OwnedBlackMarketItems then
-        if Ply.OwnedBlackMarketItems[CAT_EQUIPMENT] == "fiber_helmet" then return end
+    if Ply.OwnedBlackMarketItems and Ply.OwnedBlackMarketItems[CAT_EQUIPMENT] then
+        return
     end
 
     local Normal = Attacker:GetForward()
