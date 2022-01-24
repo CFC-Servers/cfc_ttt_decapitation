@@ -49,7 +49,7 @@ hook.Remove( "DoPlayerDeath", "FWKZT.SandboxHeadshot.DoPlayerDeath" )
 
 hook.Add( "DoPlayerDeath", "FWKZT.SandboxHeadshot.DoPlayerDeath", function( ply )
     if GAMEMODE_NAME ~= "sandbox" then return end
-    pl:SetDTBool( DT_PLAYER_HEADSHOT_BOOL, ply:LastHitGroup() == HITGROUP_HEAD )
+    ply:SetDTBool( DT_PLAYER_HEADSHOT_BOOL, ply:LastHitGroup() == HITGROUP_HEAD )
 end )
 
 hook.Remove( "ScaleNPCDamage", "FWKZT.SandboxHeadshot.ScaleNPCDamage" )
