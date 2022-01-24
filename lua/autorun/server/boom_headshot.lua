@@ -54,7 +54,7 @@ end )
 
 hook.Add( "ScaleNPCDamage", "FWKZT.SandboxHeadshot.ScaleNPCDamage", function( npc, hitgroup )
     npc.LastHitGroup = hitgroup
-    npc:SetDTBool( DT_NPC_HEADSSHOT_BOOL, hitgroup == HITGROUP_HEAD )
+    npc:SetDTBool( DT_NPC_HEADSHOT_BOOL, hitgroup == HITGROUP_HEAD )
 end )
 
 hook.Add( "OnNPCKilled", "FWKZT.SandboxHeadshot.OnNPCKilled", function( npc )
