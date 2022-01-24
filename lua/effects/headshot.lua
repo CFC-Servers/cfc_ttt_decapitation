@@ -1,14 +1,11 @@
 function EFFECT:Init( data )
     local pos = data:GetOrigin()
     local norm = data:GetNormal()
-    local mag = data:GetMagnitude()
-    local ent = data:GetEntity()
-    local scale = math.Round( data:GetScale() )
     sound.Play( "physics/flesh/flesh_bloody_break.wav", pos, 77, math.Rand( 50, 100 ) )
     sound.Play( "physics/body/body_medium_break" .. math.random( 2, 4 ) .. ".wav", pos, 77, math.Rand( 90, 110 ) )
     local emitter = ParticleEmitter( pos )
 
-    for i = 1, 12 do
+    for _ = 1, 12 do
         local particle = emitter:Add( "fwkzt/sprite_bloodspray" .. math.random( 8 ), pos )
         particle:SetVelocity( norm * 32 + VectorRand() * 16 )
         particle:SetDieTime( math.Rand( 1.5, 2.5 ) )
@@ -37,7 +34,7 @@ function EFFECT:Init( data )
     local maxbound = Vector( 3, 3, 3 )
     local minbound = maxbound * -1
 
-    for i = 1, math.random( 5, 8 ) do
+    for _ = 1, math.random( 5, 8 ) do
         local dir = ( norm * 2 + VectorRand() ) / 3
         dir:Normalize()
         local ent = ClientsideModel( "models/props_junk/Rock001a.mdl", RENDERGROUP_OPAQUE )
