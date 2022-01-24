@@ -24,10 +24,13 @@ hook.Add( "CreateClientsideRagdoll", "FWKZT.Headshot.CreateCRagdolls", function(
     if entity.WasHeadshotDeath and entity:WasHeadshotDeath() then
         local head = ragdoll:LookupBone( "valvebiped.bip01_head1" )
         if not head then return end
+
         local pos = ragdoll:GetBonePosition( head )
         local ragHead = ragdoll:LookupBone( "valvebiped.bip01_head1" )
         if not ragHead then return end
+
         ragdoll:ManipulateBoneScale( ragHead, Vector( 0, 0, 0 ) )
+
         local eD = EffectData()
         eD:SetEntity( entity )
         eD:SetNormal( -entity:GetForward() )
