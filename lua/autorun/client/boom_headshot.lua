@@ -16,8 +16,6 @@ hook.Add( "Initialize", "CreateBlood.TTT", function()
     CreateSpriteMaterials()
 end )
 
-hook.Remove( "CreateClientsideRagdoll", "FWKZT.Headshot.CreateCRagdolls" )
-
 hook.Add( "CreateClientsideRagdoll", "FWKZT.Headshot.CreateCRagdolls", function( entity, ragdoll )
     if GAMEMODE_NAME ~= "sandbox" then return end
 
