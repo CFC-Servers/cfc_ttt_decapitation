@@ -31,6 +31,7 @@ function EFFECT:Init( data )
     particle:SetLighting( true )
     emitter:Finish()
     util.Blood( pos, math.random( 8, 10 ), Vector( 0, 0, 1 ), 128 )
+
     local maxbound = Vector( 3, 3, 3 )
     local minbound = maxbound * -1
 
@@ -45,6 +46,7 @@ function EFFECT:Init( data )
             ent:SetPos( pos + dir * 6 )
             ent:PhysicsInitBox( minbound, maxbound )
             ent:SetCollisionBounds( minbound, maxbound )
+
             local phys = ent:GetPhysicsObject()
 
             if phys:IsValid() then
