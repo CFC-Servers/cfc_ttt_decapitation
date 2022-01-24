@@ -59,6 +59,7 @@ function EFFECT:Init( data )
     for _ = 1, data:GetMagnitude() do
         local heading = ( VectorRand():GetNormalized() * 3 + dir ) / 4
         local particle = emitter:Add( "fwkzt/sprite_bloodspray" .. math.random( 8 ), pos + heading )
+
         particle:SetVelocity( force * math.Rand( 0.8, 1 ) * heading )
         particle:SetDieTime( math.Rand( 3, 6 ) )
         particle:SetStartAlpha( 200 )
