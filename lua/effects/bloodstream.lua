@@ -29,7 +29,7 @@ local function CollideCallback( oldparticle, hitpos, hitnormal )
     local nhitnormal = hitnormal * 90
     local emitter = ParticleEmitter( pos )
 
-    for i = 1, num do
+    for _ = 1, num do
         local particle = emitter:Add( "fwkzt/sprite_bloodspray" .. math.random( 8 ), pos )
         particle:SetLighting( true )
         particle:SetVelocity( VectorRand():GetNormalized() * math.Rand( 75, 150 ) + nhitnormal )
@@ -56,7 +56,7 @@ function EFFECT:Init( data )
     local force = data:GetScale()
     local emitter = ParticleEmitter( pos )
 
-    for i = 1, data:GetMagnitude() do
+    for _ = 1, data:GetMagnitude() do
         local heading = ( VectorRand():GetNormalized() * 3 + dir ) / 4
         local particle = emitter:Add( "fwkzt/sprite_bloodspray" .. math.random( 8 ), pos + heading )
         particle:SetVelocity( force * math.Rand( 0.8, 1 ) * heading )

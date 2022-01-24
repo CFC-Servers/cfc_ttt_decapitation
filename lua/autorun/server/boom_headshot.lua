@@ -41,7 +41,7 @@ local function gibPlayerHead( Ply, Normal )
 end
 
 -- Player Headshots
-local function PlayerDeath( Ply, Inflictor, Attacker )
+local function PlayerDeath( Ply, _, Attacker )
     if GAMEMODE_NAME ~= "terrortown" then return end
     if not IsValid( Ply.server_ragdoll ) then return end
     if not Ply.was_headshot then return end
@@ -60,14 +60,14 @@ end
 hook.Add( "PlayerDeath", "HeadshotDecap.PlayerDeath", PlayerDeath )
 hook.Remove( "DoPlayerDeath", "FWKZT.SandboxHeadshot.DoPlayerDeath" )
 
-hook.Add( "DoPlayerDeath", "FWKZT.SandboxHeadshot.DoPlayerDeath", function( pl, attacker, dmg )
+hook.Add( "DoPlayerDeath", "FWKZT.SandboxHeadshot.DoPlayerDeath", function( ply )
     if GAMEMODE_NAME ~= "sandbox" then return end
-    pl:SetDTBool( DT_PLAYER_HEADSHOT_BOOL, pl:LastHitGroup() == HITGROUP_HEAD )
+    pl:SetDTBool( DT_PLAYER_HEADSHOT_BOOL, ply:LastHitGroup() == HITGROUP_HEAD )
 end )
 
 hook.Remove( "ScaleNPCDamage", "FWKZT.SandboxHeadshot.ScaleNPCDamage" )
 
-hook.Add( "ScaleNPCDamage", "FWKZT.SandboxHeadshot.ScaleNPCDamage", function( npc, hitgroup, dmginfo )
+hook.Add( "ScaleNPCDamage", "FWKZT.SandboxHeadshot.ScaleNPCDamage", function( npc, hitgroup )
     if GAMEMODE_NAME ~= "sandbox" then return end
     npc.LastHitGroup = hitgroup
     npc:SetDTBool( DT_NPC_HEADSHOT_BOOL, hitgroup == HITGROUP_HEAD )
@@ -75,7 +75,7 @@ end )
 
 hook.Remove( "OnNPCKilled", "FWKZT.SandboxHeadshot.OnNPCKilled" )
 
-hook.Add( "OnNPCKilled", "FWKZT.SandboxHeadshot.OnNPCKilled", function( npc, attacker, inf )
+hook.Add( "OnNPCKilled", "FWKZT.SandboxHeadshot.OnNPCKilled", function( npc )
     if GAMEMODE_NAME ~= "sandbox" then return end
     npc:SetDTBool( DT_NPC_HEADSHOT_BOOL, npc.LastHitGroup == HITGROUP_HEAD )
 end )
