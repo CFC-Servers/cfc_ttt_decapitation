@@ -35,7 +35,7 @@ function EFFECT:Init( data )
     local maxbound = Vector( 3, 3, 3 )
     local minbound = maxbound * -1
 
-    for _ = 1, math.random( 3, 5 ) do
+    for _ = 1, math.random( 5, 8 ) do
         local dir = ( norm * 2 + VectorRand() ) / 3
         dir:Normalize()
         local ent = ClientsideModel( "models/props_junk/Rock001a.mdl", RENDERGROUP_OPAQUE )
