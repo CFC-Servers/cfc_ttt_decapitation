@@ -51,7 +51,7 @@ function EFFECT:Init( data )
 
             if phys:IsValid() then
                 phys:SetMaterial( "water" )
-                phys:ApplyForceOffset( ent:GetPos() + VectorRand() * 5, dir * math.Rand( 50, 100 ) )
+                phys:ApplyForceOffset( ent:GetPos() + VectorRand() * 5, dir * math.Rand( -10, 10 ) )
             end
 
             SafeRemoveEntityDelayed( ent, math.Rand( 6, 10 ) )
