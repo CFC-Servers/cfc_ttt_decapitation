@@ -1,8 +1,8 @@
 function EFFECT:Init( data )
     local pos = data:GetOrigin()
     local norm = data:GetNormal()
-    sound.Play( "physics/flesh/flesh_bloody_break.wav", pos, 77, math.Rand( 50, 100 ) )
-    sound.Play( "physics/body/body_medium_break" .. math.random( 2, 4 ) .. ".wav", pos, 77, math.Rand( 90, 110 ) )
+    sound.Play( "physics/flesh/flesh_bloody_break.wav", pos, 65, math.Rand( 50, 100 ) )
+    sound.Play( "physics/body/body_medium_break" .. math.random( 2, 4 ) .. ".wav", pos, 65, math.Rand( 90, 110 ) )
     local emitter = ParticleEmitter( pos )
 
     for _ = 1, 12 do
@@ -35,7 +35,7 @@ function EFFECT:Init( data )
     local maxbound = Vector( 3, 3, 3 )
     local minbound = maxbound * -1
 
-    for _ = 1, math.random( 5, 8 ) do
+    for _ = 1, math.random( 3, 5 ) do
         local dir = ( norm * 2 + VectorRand() ) / 3
         dir:Normalize()
         local ent = ClientsideModel( "models/props_junk/Rock001a.mdl", RENDERGROUP_OPAQUE )
@@ -50,7 +50,7 @@ function EFFECT:Init( data )
             local phys = ent:GetPhysicsObject()
 
             if phys:IsValid() then
-                phys:SetMaterial( "zombieflesh" )
+                phys:SetMaterial( "water" )
                 phys:ApplyForceOffset( ent:GetPos() + VectorRand() * 5, dir * math.Rand( 50, 100 ) )
             end
 
