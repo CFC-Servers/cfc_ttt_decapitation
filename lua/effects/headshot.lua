@@ -51,7 +51,6 @@ function EFFECT:Init( data )
 
             if phys:IsValid() then
                 phys:SetMaterial( "zombieflesh" )
-                phys:ApplyForceOffset( ent:GetPos() + VectorRand() * 5, dir * math.Rand( 300, 800 ) )
             end
 
             SafeRemoveEntityDelayed( ent, math.Rand( 6, 10 ) )

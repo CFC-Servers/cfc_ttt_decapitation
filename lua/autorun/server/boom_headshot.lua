@@ -46,19 +46,19 @@ end
 
 hook.Add( "PlayerDeath", "HeadshotDecap.PlayerDeath", PlayerDeath )
 
-hook.Add( "InitPostEntity", "FWKZT.SandboxHeadshot.InitPostEntity", function() -- GAMEMODE_NAME is only available later so we have to wait.
+--hook.Add( "InitPostEntity", "FWKZT.SandboxHeadshot.InitPostEntity", function() -- GAMEMODE_NAME is only available later so we have to wait.
     if GAMEMODE_NAME ~= "sandbox" then return end
 
     hook.Add( "DoPlayerDeath", "FWKZT.SandboxHeadshot.DoPlayerDeath", function( ply )
-        ply:SetDTBool( DT_PLAYER_HEADSHOT_BOOL, ply:LastHitGroup() == HITGROUP_HEAD )
+        ply:SetDTInt( 31, ply:LastHitGroup() )
     end )
 
     hook.Add( "ScaleNPCDamage", "FWKZT.SandboxHeadshot.ScaleNPCDamage", function( npc, hitgroup )
         npc.LastHitGroup = hitgroup
-        npc:SetDTBool( DT_NPC_HEADSHOT_BOOL, hitgroup == HITGROUP_HEAD )
+        npc:SetDTInt( 31, hitgroup )
     end )
 
     hook.Add( "OnNPCKilled", "FWKZT.SandboxHeadshot.OnNPCKilled", function( npc )
-        npc:SetDTBool( DT_NPC_HEADSHOT_BOOL, npc.LastHitGroup == HITGROUP_HEAD )
+        npc:SetDTInt( 31, npc.LastHitGroup )
     end )
-end)
+--end)
