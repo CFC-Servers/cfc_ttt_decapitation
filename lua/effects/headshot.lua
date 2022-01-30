@@ -3,6 +3,7 @@ function EFFECT:Init( data )
     local norm = data:GetNormal()
     sound.Play( "physics/flesh/flesh_bloody_break.wav", pos, 65, math.Rand( 50, 100 ) )
     sound.Play( "physics/body/body_medium_break" .. math.random( 2, 4 ) .. ".wav", pos, 65, math.Rand( 90, 110 ) )
+
     local emitter = ParticleEmitter( pos )
 
     for _ = 1, 12 do
